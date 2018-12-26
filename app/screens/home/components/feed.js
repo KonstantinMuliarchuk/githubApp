@@ -1,14 +1,20 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { View, FlatList, Text, TouchableOpacity } from 'react-native'
+import { View, FlatList, Text, TouchableOpacity, Linking } from 'react-native'
 import { FeedItem } from './feedItem';
 import { colors } from '../../../theme/constants';
 import Loader from '../../../components/loader';
+import { showModal } from '../../../utils/navigation';
 
 class Feed extends PureComponent {
 
-    onPress = (url) => {
-        
+    onPress = (item) => {
+        console.log('Item data:', item)
+        if (item.svn_url) {
+        Linking.openURL(item.svn_url).catch(err => console.error('An error occurred', err))
+        }else{
+            alert('No homepage exist')
+        }
     }
 
     renderItem = ({ item }) => {

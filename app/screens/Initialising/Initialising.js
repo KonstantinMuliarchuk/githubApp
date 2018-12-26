@@ -6,7 +6,7 @@ import {
   AsyncStorage
 } from 'react-native'
 
-import { USER_KEY, AUTHORIZED } from '../../utils/constants';
+import { USER_KEY, AUTHORIZED, NAVIGATE } from '../../utils/constants';
 import { goHome, goToAuth } from '../../utils/navigation';
 import { setAxiosDefaults } from '../../utils/axiosDefaults';
 import { action } from '../../store/store';
@@ -22,10 +22,10 @@ export default class Initialising extends React.Component {
       if (token) {
         setAxiosDefaults(token)
         action(AUTHORIZED, token)
-        goHome()
+        action(NAVIGATE, {goHome: true})
       } else {
         setAxiosDefaults()
-        goToAuth()
+        action(NAVIGATE, {goToAuth: true})
       }
     } catch (err) {
       console.log('error: ', err)
