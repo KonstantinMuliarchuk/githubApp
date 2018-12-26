@@ -13,8 +13,9 @@ class Home extends Component {
     static options(passProps) {
         return {
             topBar: {
+                visible: true,
                 title: {
-                    text: 'Feed'
+                    text: 'Repositories search screen'
                 },
             }
         };
