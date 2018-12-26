@@ -20,6 +20,7 @@ class Home extends Component {
             }
         };
     }
+
     state = {
         page: 1,
         sort: ['stars', 'forks'],
@@ -28,20 +29,23 @@ class Home extends Component {
     }
 
     loadData = () => {
-        const { search, sort, selectedIndex } = this.state
+        const { search, sort, selectedIndex } = this.state;
         action(LOAD_HOME, { search, page: 1, sort: sort[selectedIndex] })
         this.setState({ page: 1 })
     }
+
     onChangeValue = (value) => {
         this.setState({ search: value })
         this.loadData()
     }
+
     loadMore = () => {
         let { page, search, sort, selectedIndex } = this.state
         page += 1
         action(LOAD_HOME, { search, page, sort: sort[selectedIndex] })
         this.setState({ page })
     }
+
     handleIndexChange = (index) => {
         this.setState({
             ...this.state,
@@ -49,7 +53,6 @@ class Home extends Component {
         }, () => {
             this.loadData()
         });
-
     }
 
     render() {

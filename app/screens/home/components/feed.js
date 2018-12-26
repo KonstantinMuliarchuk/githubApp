@@ -44,7 +44,7 @@ class Feed extends PureComponent {
                         renderItem={(item) => this.renderItem(item)}
                         onEndReachedThreshold={0.7}
                         getItemLayout={(data, index) => (
-                            { length: 200, offset: 200 * index, index }
+                            { length: 210, offset: 210 * index, index }
                         )}
                         onEndReached={loadMore}
                         onRefresh={this.refreshingStarted}
