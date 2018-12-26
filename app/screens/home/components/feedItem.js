@@ -2,34 +2,40 @@ import React from 'react';
 import { View, Text, Image } from 'react-native'
 import { width, shadows, flex, colors, images } from '../../../theme/constants';
 
-export const FeedItem = ({ data }) => (
-    <View style={[styles.container, shadows.default]}>
-        <Text style={styles.title}>{data.name}</Text>
-        <View style={styles.rowView}>
-            <View style={styles.reitContainers}>
-                <Image
-                    style={styles.image}
-                    source={images.star}
-                />
-                <Text>{data.stargazers_count}</Text>
+class FeedItem extends React.PureComponent{ 
+    
+    render() {
+        const {data} = this.props;
+        return (
+            <View style={[styles.container, shadows.default]}>
+                <Text style={styles.title}>{data.name}</Text>
+                <View style={styles.rowView}>
+                    <View style={styles.reitContainers}>
+                        <Image
+                            style={styles.image}
+                            source={images.star}
+                        />
+                        <Text>{data.stargazers_count}</Text>
+                    </View>
+                    <View style={styles.reitContainers}>
+                        <Image
+                            style={styles.image}
+                            source={images.fork}
+                        />
+                        <Text>{data.forks}</Text>
+                    </View>
+        
+                </View>
+                <Text>Description:</Text>
+                <Text
+                    style={styles.description}
+                    numberOfLines={3}
+                >{data.description}
+                </Text>
             </View>
-            <View style={styles.reitContainers}>
-                <Image
-                    style={styles.image}
-                    source={images.fork}
-                />
-                <Text>{data.forks}</Text>
-            </View>
-
-        </View>
-        <Text>Description:</Text>
-        <Text
-            style={styles.description}
-            numberOfLines={3}
-        >{data.description}
-        </Text>
-    </View>
-)
+        )
+    }
+   }
 
 const styles = {
     container: {
@@ -74,3 +80,4 @@ const styles = {
         color: colors.black,
     }
 }
+export default FeedItem;

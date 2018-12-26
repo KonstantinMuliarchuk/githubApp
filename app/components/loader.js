@@ -61,7 +61,6 @@ const styles = {
         alignItems: 'center',
         position: 'absolute',
         top: 0,
-        left: 0
     },
     image: {
         width: 100,

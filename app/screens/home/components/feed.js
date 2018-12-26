@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { View, FlatList, Text, TouchableOpacity, Linking } from 'react-native'
-import { FeedItem } from './feedItem';
+import  FeedItem  from './feedItem';
 import { colors } from '../../../theme/constants';
 import Loader from '../../../components/loader';
 import { showModal } from '../../../utils/navigation';
@@ -34,21 +34,24 @@ class Feed extends PureComponent {
     render() {
         const { repositories, loadMore, loader } = this.props;
         return (
-            <View style={{ paddingBottom: 100 }}>
+            <View style={{ paddingBottom: 100, alignItems: 'center' }}>
                 {repositories
                     ? <FlatList
                         showsVerticalScrollIndicator={true}
                         data={repositories}
+                        extraData={repositories}
                         keyExtractor={this.keyExtractor}
                         renderItem={(item) => this.renderItem(item)}
                         onEndReachedThreshold={0.7}
+                        getItemLayout={(data, index) => (
+                            { length: 200, offset: 200 * index, index }
+                        )}
                         onEndReached={loadMore}
                         onRefresh={this.refreshingStarted}
                     />
                     : <Text style={styles.announce}>Search Github Repositories by name</Text>
                 }
                 {loader && <Loader />}
-
             </View>
         );
     }
