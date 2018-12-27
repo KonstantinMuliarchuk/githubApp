@@ -15,7 +15,8 @@ export const colors = {
 export const images = {
     github: require('./images/github.png'),
     fork: require('./images/fork.png'),
-    star: require('./images/star.png')
+    star: require('./images/star.png'),
+    backButton: require('./images/back.png')
 }
 export const shadows = {
     default: {

@@ -4,14 +4,15 @@ import { View, FlatList, Text, TouchableOpacity, Linking } from 'react-native'
 import  FeedItem  from './feedItem';
 import { colors } from '../../../theme/constants';
 import Loader from '../../../components/loader';
-import { showModal } from '../../../utils/navigation';
+import { action } from '../../../store/store';
+import { NAVIGATE } from '../../../utils/constants';
 
 class Feed extends PureComponent {
 
     onPress = (item) => {
         console.log('Item data:', item)
         if (item.svn_url) {
-        Linking.openURL(item.svn_url).catch(err => console.error('An error occurred', err))
+            action(NAVIGATE,{modal: 'WebView', props: {url: item.svn_url}, title: item.name})
         }else{
             alert('No homepage exist')
         }

@@ -7,7 +7,12 @@ Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       component: {
-        name: 'Initializing'
+        name: 'Initializing',
+        options: {
+          topBar: {
+            visible: false
+          }
+        }
       }
     },
   });

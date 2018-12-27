@@ -6,15 +6,16 @@ import { setAxiosDefaults } from '../utils/axiosDefaults';
 
 const client_id = Platform.OS === 'ios' ? 'e2d5ea5767ec2646c132' : 'efb96edc60f746d70c64'
 const client_secret = Platform.OS === 'ios' ? '0a3d69a4a9fd7bbf4b889248937400b6c3a201d8' : 'c25e8b8fa83537f688dd017e7eeb8f2ee50d6248'
-
+const managerString = 'githubapp' 
 const config = {
   github: {
     client_id,
     client_secret
   }
 }
+
 // Create the manager
-const manager = new OAuthManager('AppGenesis')
+const manager = new OAuthManager(managerString)
 
 // configure the manager
 manager.configure(config);

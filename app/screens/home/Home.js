@@ -7,6 +7,7 @@ import { SearchBar } from 'react-native-elements'
 import { fetchHome } from '../../api/fetchHomeData';
 import { colors, width } from '../../theme/constants';
 import SegmentedControlTab from 'react-native-segmented-control-tab'
+import  WebViewModal  from './WebViewModal';
 
 class Home extends Component {
 
@@ -79,7 +80,6 @@ class Home extends Component {
                 <Feed
                     loadMore={this.loadMore}
                 />
-
             </View>
         );
     }

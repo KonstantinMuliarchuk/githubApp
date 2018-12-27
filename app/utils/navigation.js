@@ -3,7 +3,7 @@ import { Navigation } from 'react-native-navigation'
 export const navigateToScreen = (data) => {
     Navigation.push(data.id, {
         component: {
-          name: data.screen,
+          name: data.route,
           passProps: {
             ...data.props
           },
@@ -18,32 +18,36 @@ export const navigateToScreen = (data) => {
       });
 }
 
-export const showModal = (data) => {
+export const showModal = ({modal, props, title}) => {
+  console.log('Modal shoving', modal, props, title)
     Navigation.showModal({
-            component: {
-              name: data.screen,
-              passProps: {
-                ...data.props
-              },
-              options: {
-                topBar: {
-                  title: {
-                    text: data.title
-                  }
+      stack: {
+        children: [{
+          component: {
+            name: modal,
+            passProps: {
+              props
+            },
+            options: {
+              topBar: {
+                title: {
+                  text: title
                 }
               }
             }
+          }
+        }]
+      }
       });
 }
 export const dismissModal = (props) => {
-    Navigation.dismissModal(props.componentId);
+    Navigation.dismissModal(props.dismiss);
 }
 
 export const goToAuth = () => Navigation.setRoot({
     root: {
         id: 'Auth',
         component: {
-            id: 'SignIn',
             name: 'SignIn',
             options: {
                 topBar: {
@@ -64,8 +68,8 @@ export const goHome = () => Navigation.setRoot({
           },
           children: [
             {
+              id: 'Home',
               component: {
-                  id: 'Home',
                 name: 'Home',
               }
             }
