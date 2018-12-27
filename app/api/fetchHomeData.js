@@ -7,7 +7,7 @@ export const fetchHome = (params) => {
             url += `q=${params.search}&`
         }
         if(params.sorting) {
-            url += `sort=${params.search}&`
+            url += `sort=${params.search}&order=desc&`
         }
     }
     url += `page=${params.page}&per_page=15`

@@ -14,7 +14,7 @@ const config = {
   }
 }
 // Create the manager
-const manager = new OAuthManager('Git hub App')
+const manager = new OAuthManager('AppGenesis')
 
 // configure the manager
 manager.configure(config);
@@ -23,9 +23,9 @@ export const auth = () => {
   //authorize
   manager.authorize('github', { scopes: 'public_repo' })
     .then(response => {
-
+      console.log('Token received: ', response)
       if (response.status === 'ok') {
-
+        console.log('Token received: ', response)
         let token = response.response.credentials.accessToken;
 
         if (token) {

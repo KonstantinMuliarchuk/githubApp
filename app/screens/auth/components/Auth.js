@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Button from '../../../components/button.component';
 import { width, images, colors } from '../../../theme/constants';
-import { auth } from '../../../api/oauth2';
+import { auth }  from '../../../api/oauth2';
+import { setAxiosDefaults } from '../../../utils/axiosDefaults';
+import { AUTHORIZED, NAVIGATE, USER_KEY } from '../../../utils/constants';
 
 class SignUp extends PureComponent {
 
