@@ -1,11 +1,9 @@
-import _ from 'lodash'
-
 export const filterExistingOrders = (existing, newRepos) => {
     let filtered = []
     let arr = []
     existing.map(order => {
         newRepos.map((newOrder, index) =>{
-            if(_.isEqual(order, newOrder)) {
+            if(order.id === newOrder.id) {
                 newRepos.splice(index, 1)
             }
         })
