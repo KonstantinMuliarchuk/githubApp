@@ -36,8 +36,9 @@ class Home extends Component {
     }
 
     onChangeValue = (value) => {
-        this.setState({ search: value })
-        this.loadData()
+        this.setState({ search: value }, () => {
+            this.loadData()
+        })
     }
 
     loadMore = () => {
