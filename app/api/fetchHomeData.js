@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 export const fetchHome = (params) => {
+
     let url = '/search/repositories?'
-    console.log('Params: ', params)
+    
     if (params) {
         if (params.search){
             url += `q=${params.search}&`
@@ -12,7 +13,6 @@ export const fetchHome = (params) => {
         }
     }
     url += `page=${params.page}&per_page=15`
-    console.log('URL :', url)
     return axios({
         ...axios.defaults,
         method: 'get',
